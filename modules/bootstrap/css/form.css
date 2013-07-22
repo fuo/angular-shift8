@@ -1,0 +1,24 @@
+/**
+ * Angular.js provides a few classes, including a "ng-pristine" class, that Twitter Bootstrap doesn't know about.
+ * These dynamically change on form elements based on validity and the pristine class lets us set the field border
+ * and glow colors to something that doesn't distract a user and makes more sense since having it appear red or green
+ * before the user interacted with the field doesn't really make sense.
+*/
+input.ng-valid:focus, textarea.ng-valid:focus {
+	border-color: #468847;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(70,136,71,.6);
+	-moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(70,136,71,.6);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(70,136,71,.6);
+}
+input.ng-invalid:focus, textarea.ng-invalid:focus {
+	border-color: #b94a48;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(185,74,72,.6);
+	-moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(185,74,72,.6);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(185,74,72,.6);
+}
+input.ng-pristine:focus, textarea.ng-pristine:focus {
+	border-color: rgba(82, 168, 236, 0.8);
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82, 168, 236,.6);
+	-moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82, 168, 236,.6);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82, 168, 236,.6);
+}
