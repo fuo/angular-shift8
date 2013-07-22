@@ -128,6 +128,25 @@
 					<p>
 						Use this convention for checkboxes, select lists, and radio buttons and switch between the form element types without changing your object! This makes things a lot more sane in my opinion, but again you are free to do as you wish.
 					</p>
+					
+					<h2 class='thin'>Templates</h2>
+					<p>
+						If you need to, you can change the directive templates and then switch which field is using which template on a case by case basis. Let's say you didn't like how I wired the HTML for the text input field...Or maybe you needed to break Twitter Bootstrap's structure. You could write your own template, calling it <code>text.html</code> and specify a new base path for the template. For example: <code>&lt;b-field type="text" ng-model="MyField" template-base-path="full-url.com/path/or/from/site/root/"&gt;&lt;/b-field&gt;</code>
+					</p>
+					<p>
+						The directive templates are dynamically loaded in via <code>$http</code> call in Angular, so it can be pretty much anywhere. The name of the template will be based off of the <code>type</code> attribute. By default, I've provided; text, password, select, radio, checkbox, file, and textarea. However, you can create your own custom input field types. Think date pickers, etc. You'll just need to create the templates and define the new base path.
+					</p>
+					
+					<h2 class='thin'>Compatibility</h2>
+					<p>
+						I love Angular-UI, it's utils and Angular-Bootstrap. This form directive is fully compatible so you can use attributes such as <code>ui-validate</code> and <code>ui-jq="setMask"</code> with <code>ui-options='{mask: "(999) 999-9999"}'</code> for example.
+					</p>
+					<p>
+						In fact, I built this directive with Angular-UI in mind. So you can use validation and have the rule key name transform into the error message. For example: <code>ui-validate="{'You must provide a valid e-mail address.': 'validate.email($value)'}"</code>
+					</p>
+					<p>
+						In the example above, I have a <code>validate</code> object in my controller with an <code>email</code> property that has a function that runs a regex to check an e-mail address format. The function returns true/false. <a href="http://angular-ui.github.io/ui-utils/" target="_blank">See the Angular-UI documention</a> for more information on validation and such. However, the key here is used in my directive templates to display to the user. By default, Angular-UI calls the key <code>validate</code> if not specified, which I do not display because it doesn't make sense. So key your validation rules.
+					</p>
 				</section>
 			</div>
 			
