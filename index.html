@@ -22,6 +22,17 @@
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular-resource.min.js"></script>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular-sanitize.min.js"></script>
+		<script type="text/javascript" src="http://angular-ui.github.io/ui-utils/core/prettifyDirective.js"></script>
+		
+		<!-- Angular UI -->
+		<script type="text/javascript" src="js/bower_components/angular-ui/build/angular-ui.min.js"></script>
+		<script type="text/javascript" src="js/bower_components/angular-ui-utils/modules/jq/jq.js"></script>
+		<script type="text/javascript" src="js/bower_components/angular-ui-utils/modules/validate/validate.js"></script>
+		<script type="text/javascript" src="js/bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="js/bower_components/angular-ui/build/angular-ui.min.css"></script>
+
+		<!-- Demo App -->
 		<script type="text/javascript" src="js/main.js"></script>
 		
 		<!-- Angular-Shift8 -->
@@ -108,8 +119,8 @@
 						<b-form class="form-horizontal" name="DemoForm" class="form-horizontal" schema="{{DemoFormSchema}}" novalidate="true">
 							<b-form-progress></b-form-progress><br />
 							<b-field type="text" required ng-model="Name"></b-field>
-							<b-field type="text" required ng-model="Email"></b-field>
-							<b-field type="text" required label="Money!" help-block="Full input field append/prepend support. Go wild! <code>append=&quot;crazy html here...&quot;</code>" prepend='<span class="add-on">$</span>' append='<span class="add-on">.00</span>' ng-model="Money"></b-field>
+							<b-field type="text" ui-validate='{"You Must enter a valid e-mail address.": "validate.email($value)"}' ng-model="Email"></b-field>
+							<b-field type="text" ui-jq="setMask" ui-options="{mask: '9,999'}" placeholder="_,___" required label="Money!" help-block="Full input field append/prepend support. Go wild! <code>append=&quot;crazy html here...&quot;</code>" prepend='<span class="add-on">$</span>' append='<span class="add-on">.00</span>' ng-model="Money"></b-field>
 							<b-field type="select" required empty="--" help-block='<code>options=&#39;{"red": {"option": "Red"}, "blueGreen": {"option": "Blue Green"}, "blue": {"option": "Blue"}}&#39;</code>' ng-model="Colors"></b-field>
 							<b-field type="radio" label="Radio Format" options='{"red": {"option": "Red"}, "blueGreen": {"option": "Blue Green", "checked": true}, "blue": {"option": "Blue"}}' ng-model="RadioTest"></b-field>
 							<b-field type="select" label="Grouped Select" options='{"red": {"option": "Red", "group": "Warm Tones"}, "blueGreen": {"option": "Blue Green", "group": "Cool Tones"}, "blue": {"option": "Blue", "group": "Cool Tones", "selected": true}}' help-block='<code>options=&#39;{"red": {"option": "Red", "group": "Warm Tones"}, "blue": {"option": "Blue", "group": "Cool Tones", "selected": true}}&#39;</code>' ng-model="ColorsGrouped"></b-field>
