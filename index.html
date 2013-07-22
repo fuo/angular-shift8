@@ -98,25 +98,36 @@
 					</div>
 					
 					<h2>Forms
-								<small class='thin'>/modules/bootstrap/form.js</small>
-							</h2>
-							<p>
-								Let's start with some directives for creating forms quickly. They are <code>&lt;b-form&gt;</code>, <code>&lt;b-field&gt;</code>, and <code>&lt;b-form-progress&gt;</code>
-							</p>
-						<div class=" bs-docs-example">
-							
-							<b-form class="form-horizontal" name="DemoForm" class="form-horizontal" schema="{{DemoFormSchema}}" novalidate="true">
-								<b-form-progress></b-form-progress><br />
-								<b-field type="text" required ng-model="Name"></b-field>
-								<b-field type="text" required ng-model="Email"></b-field>
-								<b-field type="text" required label="Money!" help-block="Full input field append/prepend support. Go wild! <code>append=&quot;crazy html here...&quot;</code>" prepend='<span class="add-on">$</span>' append='<span class="add-on">.00</span>' ng-model="Money"></b-field>
-								<b-field type="select" required empty="--" help-block='<code>options=&#39;{"red": {"option": "Red"}, "blueGreen": {"option": "Blue Green"}, "blue": {"option": "Blue"}}&#39;</code>' ng-model="Colors"></b-field>
-								<b-field type="radio" label="Radio Format" options='{"red": {"option": "Red"}, "blueGreen": {"option": "Blue Green", "checked": true}, "blue": {"option": "Blue"}}' ng-model="RadioTest"></b-field>
-								<b-field type="select" label="Grouped Select" options='{"red": {"option": "Red", "group": "Warm Tones"}, "blueGreen": {"option": "Blue Green", "group": "Cool Tones"}, "blue": {"option": "Blue", "group": "Cool Tones", "selected": true}}' help-block='<code>options=&#39;{"red": {"option": "Red", "group": "Warm Tones"}, "blue": {"option": "Blue", "group": "Cool Tones", "selected": true}}&#39;</code>' ng-model="ColorsGrouped"></b-field>
-							</b-form>
-							
-						</div>
+						<small class='thin'>/modules/bootstrap/form.js</small>
+					</h2>
+					<p>
+						Let's start with some directives for creating forms quickly. They are <code>&lt;b-form&gt;</code>, <code>&lt;b-field&gt;</code>, and <code>&lt;b-form-progress&gt;</code>
+					</p>
+					<div class=" bs-docs-example">
+
+						<b-form class="form-horizontal" name="DemoForm" class="form-horizontal" schema="{{DemoFormSchema}}" novalidate="true">
+							<b-form-progress></b-form-progress><br />
+							<b-field type="text" required ng-model="Name"></b-field>
+							<b-field type="text" required ng-model="Email"></b-field>
+							<b-field type="text" required label="Money!" help-block="Full input field append/prepend support. Go wild! <code>append=&quot;crazy html here...&quot;</code>" prepend='<span class="add-on">$</span>' append='<span class="add-on">.00</span>' ng-model="Money"></b-field>
+							<b-field type="select" required empty="--" help-block='<code>options=&#39;{"red": {"option": "Red"}, "blueGreen": {"option": "Blue Green"}, "blue": {"option": "Blue"}}&#39;</code>' ng-model="Colors"></b-field>
+							<b-field type="radio" label="Radio Format" options='{"red": {"option": "Red"}, "blueGreen": {"option": "Blue Green", "checked": true}, "blue": {"option": "Blue"}}' ng-model="RadioTest"></b-field>
+							<b-field type="select" label="Grouped Select" options='{"red": {"option": "Red", "group": "Warm Tones"}, "blueGreen": {"option": "Blue Green", "group": "Cool Tones"}, "blue": {"option": "Blue", "group": "Cool Tones", "selected": true}}' help-block='<code>options=&#39;{"red": {"option": "Red", "group": "Warm Tones"}, "blue": {"option": "Blue", "group": "Cool Tones", "selected": true}}&#39;</code>' ng-model="ColorsGrouped"></b-field>
+						</b-form>
+
 					</div>
+					
+					<p>
+						<strong>A note about select, radio, and checkbox options...</strong><br />
+						Angular.js has an attribute <code>ng-options</code> which is not the easiest thing to use. I'm using a convention and sticking to a specific format in my directive templates. This isn't to say that you can't ignore my <code>options</code> attribute and write your own <code>ng-options</code> to have that passed along and pull from some variable in your controller...But I would highly recommend using my format (seen above in the help area under some of the fields).
+					</p>
+					<p>
+						The format is pretty straight forward. I use an object (not an array) even for simple lists. Using an array will assign numbers for the values, for example:<br /><code>&lt;option value="0"&gt;Option Label&lt;/option&gt;</code><br />
+						Which I think is just weird and not very useful. How many times do you want a number stored in your database the only references the order in which you listed values on the front-end?! So yea, key those values and use an object...But even still you have a few ways to go about it there. I came up with an object format where the key is the option value and then the value is another object with an <code>option</code> key who's value is the label the user sees in the select/radio/checkbox area. Then optional <code>group</code> and <code>selected</code> or <code>checked</code> keys that have true/false for selected/checked and a string value for select groups.
+					</p>
+					<p>
+						Use this convention for checkboxes, select lists, and radio buttons and switch between the form element types without changing your object! This makes things a lot more sane in my opinion, but again you are free to do as you wish.
+					</p>
 				</section>
 			</div>
 			
