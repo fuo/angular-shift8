@@ -1,0 +1,17 @@
+<div class="control-group {{$form[modelName].$valid | groupClassError:pristine}} {{controlGroupClass}}">
+	<div class="control-label">
+		<label>{{label}}</label>
+	</div>
+	<div class="controls">
+		<label ng-repeat='(key, value) in inputOptions' class="radio {{inline}}">
+			<input type="checkbox" id="{{name | spacesToDashes}}_{{key | spacesToDashes}}" value="{{key}}" ng-checked="value.selected" />
+			{{value.option}}
+		</label>
+		<span ng-show="help" class="{{helpClass}}" ng-bind-html-unsafe="help">
+			{{help}}
+		</span>
+		<span class="{{errorClass}}" ng-repeat="(error, invalid) in $form[modelName].$error">
+			{{error | errorMessage:error:invalid:modelName:label:pristine}}
+		</span>
+	</div>
+</div>
