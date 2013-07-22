@@ -10,7 +10,7 @@
 		<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css" />
 		<link rel="stylesheet" type="text/css" href="css/main.css" />
-		<link rel="stylesheet" type="text/css" href="css/pretty.css" />
+		<link rel="stylesheet" type="text/css" href="css/prettify.css" />
 		<!--[if lt IE 9]>
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
@@ -21,6 +21,7 @@
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular-resource.min.js"></script>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular-sanitize.min.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
 		
 		<!-- Angular-Shift8 -->
 		<script type="text/javascript" src="https://raw.github.com/tmaiaroto/angular-shift8/master/modules/bootstrap/form.js"></script>
@@ -84,10 +85,30 @@
 
 			<div class="container">
 				<section>
-					<h1 class="page-header">Section
-					<small>About it...</small>
+					<h1 class="page-header">Bootstrap
+						<small>Modules for use with Twitter Bootstrap...</small>
 					</h1>
-					<p>Lorem ipsum...</p>
+					
+					<div class="row">
+						<div class="span6">
+							<p>Using Twitter Bootstrap? Well, as you know it has a specific HTML structure for forms and various components. I've created a set of directives that help make this an easier process which will speed up your development time.</p>
+						</div>
+						<div class="span6"></div>
+					</div>
+					
+					<div class="span12">
+							<h2>Forms
+								<small class='thin'>/modules/bootstrap/form.js</small>
+							</h2>
+							<p>
+								Let's start with some directives for creating forms quickly. They are <code>&lt;b-form&gt;</code>, <code>&lt;b-field&gt;</code>, and <code>&lt;b-form-progress&gt;</code>
+							</p>
+						</div>
+						
+						<b-form name="DemoForm" class="form-horizontal" schema="{{DemoFormSchema}}" novalidate="true">
+							<b-field ng-model="FirstName"></b-field>
+						</b-form>
+					</div>
 				</section>
 			</div>
 			
