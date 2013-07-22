@@ -25,24 +25,19 @@ var MainCtrl = function($scope, $element) {
 
 	// TODO: Move this to another controller and setup routes in the future as more sections are added.
 	$scope.DemoFormSchema = {
-		FirstName: {
+		Name: {
 			type: 'text',
-			label: 'First Name',
-			placeholder: 'John'
-		},
-		LastName: {
-			type: 'text',
-			label: 'Last Name',
-			placeholder: 'Doe'
+			label: 'Your Name',
+			placeholder: 'John Doe'
 		},
 		Email: {
 			label: 'E-mail',
 			placeholder: 'jdoe@example.com',
-			helpBlock: '<small>Some help text here...Which can be inline or block by passing <code>help-block</code> or <code>help-inline</code></small>'
+			helpBlock: '<small>Some help text here...Which can be inline or block by defining <code>help-block</code> or <code>help-inline</code> attributes.</small>'
 		},
-		SelectTest: {
-			label: 'Select Field',
-			options: {'0800-1000': {"option": "8AM - 10PM"}, '1000-1200': {"option": "10AM - Noon"}, '1200-1400': {option: "Noon - 2PM"}}
+		Colors: {
+			label: 'Select A Color',
+			options: {"red": {"option": "Red"}, 'blueGreen': {"option": "Blue Green"}, 'blue': {"option": "Blue"}}
 		}
 	};
 

@@ -11,6 +11,7 @@
 		<link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css" />
 		<link rel="stylesheet" type="text/css" href="css/main.css" />
 		<link rel="stylesheet" type="text/css" href="css/prettify.css" />
+		<link rel="stylesheet" type="text/css" href="css/docs.css" />
 		<!--[if lt IE 9]>
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
@@ -25,11 +26,11 @@
 		
 		<!-- Angular-Shift8 -->
 		<script type="text/javascript" src="modules/bootstrap/form.js"></script>
+		<link rel="stylesheet" type="text/css" href="modules/bootstrap/css/form.css" />
 
 		<style type="text/css">
 			body {
-				padding-top: 60px;
-				padding-bottom: 40px;
+				padding-bottom: 30px;
 			}
 		</style>
 		<link href="img/favicon.png" title="Icon" type="image/x-icon" rel="icon" />
@@ -90,24 +91,31 @@
 					</h1>
 					
 					<div class="row">
-						<div class="span6">
+						<div class="span10 offset2">
 							<p>Using Twitter Bootstrap? Well, as you know it has a specific HTML structure for forms and various components. I've created a set of directives that help make this an easier process which will speed up your development time.</p>
 						</div>
-						<div class="span6"></div>
+						
 					</div>
 					
-					<div class="span12">
-							<h2>Forms
+					<h2>Forms
 								<small class='thin'>/modules/bootstrap/form.js</small>
 							</h2>
 							<p>
 								Let's start with some directives for creating forms quickly. They are <code>&lt;b-form&gt;</code>, <code>&lt;b-field&gt;</code>, and <code>&lt;b-form-progress&gt;</code>
 							</p>
+						<div class=" bs-docs-example">
+							
+							<b-form class="form-horizontal" name="DemoForm" class="form-horizontal" schema="{{DemoFormSchema}}" novalidate="true">
+								<b-form-progress></b-form-progress><br />
+								<b-field type="text" required ng-model="Name"></b-field>
+								<b-field type="text" required ng-model="Email"></b-field>
+								<b-field type="text" required label="Money!" help-block="Full input field append/prepend support. Go wild! <code>append=&quot;crazy html here...&quot;</code>" prepend='<span class="add-on">$</span>' append='<span class="add-on">.00</span>' ng-model="Money"></b-field>
+								<b-field type="select" required empty="--" help-block='<code>options=&#39;{"red": {"option": "Red"}, "blueGreen": {"option": "Blue Green"}, "blue": {"option": "Blue"}}&#39;</code>' ng-model="Colors"></b-field>
+								<b-field type="radio" label="Radio Format" options='{"red": {"option": "Red"}, "blueGreen": {"option": "Blue Green", "checked": true}, "blue": {"option": "Blue"}}' ng-model="RadioTest"></b-field>
+								<b-field type="select" label="Grouped Select" options='{"red": {"option": "Red", "group": "Warm Tones"}, "blueGreen": {"option": "Blue Green", "group": "Cool Tones"}, "blue": {"option": "Blue", "group": "Cool Tones", "selected": true}}' help-block='<code>options=&#39;{"red": {"option": "Red", "group": "Warm Tones"}, "blue": {"option": "Blue", "group": "Cool Tones", "selected": true}}&#39;</code>' ng-model="ColorsGrouped"></b-field>
+							</b-form>
+							
 						</div>
-						
-						<b-form name="DemoForm" class="form-horizontal" schema="{{DemoFormSchema}}" novalidate="true">
-							<b-field type="text" ng-model="FirstName"></b-field>
-						</b-form>
 					</div>
 				</section>
 			</div>
