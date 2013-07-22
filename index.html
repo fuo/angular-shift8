@@ -119,7 +119,7 @@
 						<b-form class="form-horizontal" name="DemoForm" class="form-horizontal" schema="{{DemoFormSchema}}" novalidate="true">
 							<b-form-progress></b-form-progress><br />
 							<b-field type="text" required ng-model="Name"></b-field>
-							<b-field type="text" ui-validate='{"You Must enter a valid e-mail address.": "validate.email($value)"}' ng-model="Email"></b-field>
+							<b-field type="text" placeholder="jdoe@example.com" ui-validate='{"You Must enter a valid e-mail address.": "validate.email($value)"}' ng-model="Email"></b-field>
 							<b-field type="text" ui-jq="setMask" ui-options="{mask: '9,999'}" placeholder="_,___" required label="Money!" help-block="Full input field append/prepend support. Go wild! <code>append=&quot;crazy html here...&quot;</code>" prepend='<span class="add-on">$</span>' append='<span class="add-on">.00</span>' ng-model="Money"></b-field>
 							<b-field type="select" required empty="--" help-block='<code>options=&#39;{"red": {"option": "Red"}, "blueGreen": {"option": "Blue Green"}, "blue": {"option": "Blue"}}&#39;</code>' ng-model="Colors"></b-field>
 							<b-field type="radio" label="Radio Format" options='{"red": {"option": "Red"}, "blueGreen": {"option": "Blue Green", "checked": true}, "blue": {"option": "Blue"}}' ng-model="RadioTest"></b-field>
