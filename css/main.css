@@ -216,3 +216,16 @@ span[ui-currency] {
 .ui-currency-zero {
   color: #000;
 }
+
+/* Less bloated, more legible */
+h1.thinner-title {
+	font-weight: 500;
+	letter-spacing: 0.02em;
+}
+.thin {
+	font-weight: 100;
+	letter-spacing: 0.08em;
+}
+.thin-tight {
+	font-weight: 100;
+}
