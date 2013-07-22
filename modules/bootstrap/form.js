@@ -52,7 +52,7 @@ angular.module('shift8.bootstrap.form', [])
 				var scriptEls = document.getElementsByTagName( 'script' );
 				var scriptDir = '';
 				for(var i=0; i < scriptEls.length; i++) {
-					var scriptMatch = /.*angular-shift8\/modules\/bootstrap\/form\.js/;
+					var scriptMatch = /.*modules\/bootstrap\/form\.js/;
 					if(scriptMatch.test(scriptEls[i].src)) {
 						var scriptPath = scriptEls[i].src;
 						scriptDir = scriptPath.substr(0, scriptPath.lastIndexOf( '/' )+1 );
