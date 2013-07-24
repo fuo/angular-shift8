@@ -1,4 +1,5 @@
-=== Angular.js Extras by Shift8Creative ===
+Angular.js Extras by Shift8Creative
+======
 
 All the relevant files to include into your project are in the `modules` directory.
 The rest of the files here are used for GitHub pages...I decided to include this in the master branch
