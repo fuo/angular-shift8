@@ -268,15 +268,24 @@ angular.module('shift8.bootstrap.form', [])
 				
 				// Silly pristine check...For some reason it isn't available in the template through $scope.$form
 				// So we're setting $scope.pristine
-				$element.bind('blur keyup change', function(evt) {
-						//console.dir(evt)
+				if($attrs.type !== 'select') {
+					$element.bind('blur keyup change', function(evt) {
+							//console.dir(evt)
+							if(evt.target.value !== undefined && evt.target.value !== '') {
+								$scope.pristine = false;
+								// no need...
+								//	ngModel.$setViewValue(evt.target.value);
+								//	ngModel.$render();
+							}
+							//console.dir(ngModel)
+					});
+				} else {
+					$element.bind('change', function(evt) {
 						if(evt.target.value !== undefined && evt.target.value !== '') {
 							$scope.pristine = false;
-							ngModel.$setViewValue(evt.target.value);
-							ngModel.$render();
 						}
-						//console.dir(ngModel)
-				});
+					});
+				}
 				
 				$scope.$watch($attrs.ngModel, function (oldVal, newVal) {
 					if(oldVal !== newVal) {
