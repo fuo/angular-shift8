@@ -172,7 +172,7 @@ angular.module('shift8.bootstrap.form', [])
 				
 				// Set the initial model value. If not set, then any validation will appear invalid until the input changes by the user.
 				$scope[modelName] = $scope.value;
-
+				
 				// -------------------
 				// FOR SELECT FIELDS
 				// -------------------
@@ -266,29 +266,40 @@ angular.module('shift8.bootstrap.form', [])
 				// $watch SOME STUFF
 				// --------------------------------
 				
-				// Silly pristine check...For some reason it isn't available in the template through $form
-				$scope.$watch(modelName, function(oldVal, newVal) {
-					// Setting a "completion" value for form completion... (other directives can use this)
-					if($attrs.type !== 'file' && $scope.$form !== undefined && $scope.$form[modelName] !== undefined && $scope.$form[modelName].$valid !== undefined) {
-						//console.dir($scope.$parent.fieldStatus)
-						if($scope.$form[modelName].$valid === true) {
-							$scope.$parent.fieldStatus[modelName] = true;
-						} else {
-							$scope.$parent.fieldStatus[modelName] = false;
+				// Silly pristine check...For some reason it isn't available in the template through $scope.$form
+				// So we're setting $scope.pristine
+				$element.bind('blur keyup change', function(evt) {
+						//console.dir(evt)
+						if(evt.target.value !== undefined && evt.target.value !== '') {
+							$scope.pristine = false;
+							ngModel.$setViewValue(evt.target.value);
+							ngModel.$render();
 						}
-						var totalValid = 0;
-						for(i in $scope.$parent.fieldStatus) {
-							if($scope.$parent.fieldStatus[i] === true) {
-								totalValid++;
+						//console.dir(ngModel)
+				});
+				
+				$scope.$watch($attrs.ngModel, function (oldVal, newVal) {
+					if(oldVal !== newVal) {
+						// Setting a "completion" value for form completion... (other directives can use this)
+						if($attrs.type !== 'file' && $scope.$form !== undefined && $scope.$form[modelName] !== undefined && $scope.$form[modelName].$valid !== undefined) {
+							//console.dir($scope.$parent.fieldStatus)
+							if($scope.$form[modelName].$valid === true) {
+								$scope.$parent.fieldStatus[modelName] = true;
+							} else {
+								$scope.$parent.fieldStatus[modelName] = false;
 							}
+							var totalValid = 0;
+							for(i in $scope.$parent.fieldStatus) {
+								if($scope.$parent.fieldStatus[i] === true) {
+									totalValid++;
+								}
+							}
+							$scope.$parent.totalValidFields = totalValid;
 						}
-						$scope.$parent.totalValidFields = totalValid;
 					}
 					
-					if(newVal !== undefined && oldVal !== newVal) {
-						$scope.pristine = false;
-					}
 				});
+				
 				
 				// Set some attributes for the field using $formSchema (if possible, when it's ready).
 				// Note: Any passed attributes ($attrs) will override these values.
@@ -392,7 +403,7 @@ angular.module('shift8.bootstrap.form', [])
 		return {
 			restrict: 'EC',
 			replace: true,
-			// scope: {},
+			//scope: {},
 			terminal: true,
 			template: '<div><div class="progress {{progressBarClass}} progress-{{Math.round(totalValidFields/totalFields * 100)}}" style="{{progressBarStyle}}"><div class="bar" style="width: {{totalValidFields/totalFields * 100}}%"></div></div></div>',
 			link: function ($scope, $element, $attrs) {
